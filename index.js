@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 import path from "path";
 import dotenv from "dotenv";
 import homeRouter from "./routes/HomeRoute.js";
@@ -11,6 +12,7 @@ connectDb();
 const __dirname = path.resolve();
 
 const app = express();
+app.use(bodyParser.json());
 
 
 app.set("view engine", "ejs");
