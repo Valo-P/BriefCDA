@@ -18,8 +18,10 @@ app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 app.set("views", "src/views");
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/js', express.static(__dirname + '/public/assets/js'));
+app.use('/css', express.static(__dirname + '/public/assets/scss'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap'));// redirect bootstrap
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery'));
 
 app.use(express.static(path.join(__dirname,"public")))
 
