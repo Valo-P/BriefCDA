@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <%- include('../head'); %>
 </head>
 <body>
-<p><%= JSON.stringify(products) %></p>
-<main>
+<%- include('../header'); -%>
+<main class="container">
     <h1>List of all Products</h1>
     <table>
         <% for(var i=0; i < products.length; i++) { %>
@@ -22,5 +19,6 @@
         <% } %>
     </table>
 </main>
+<%- include('../footer'); -%>
 </body>
 </html>

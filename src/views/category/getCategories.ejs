@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <%- include('../head'); %>
 </head>
 <body>
-    <p><%= JSON.stringify(categories) %></p>
-    <main>
-        <h1>List of all Categories</h1>
+<%- include('../header'); -%>
+<main class="container">
+    <h1>List of all Categories</h1>
         <table>
             <% for(var i=0; i < categories.length; i++) { %>
                 <tr>
                     <td>ID : <%= categories[i]._id %></td>
-                    <td>Name : <%= categories[i].categoryName %></td>
+                    <td>/ Name : <%= categories[i].categoryName %></td>
                 </tr>
             <% } %>
         </table>
-    </main>
+</main>
+<%- include('../footer'); -%>
 </body>
 </html>
