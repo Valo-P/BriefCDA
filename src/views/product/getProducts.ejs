@@ -7,16 +7,29 @@
 <%- include('../header'); -%>
 <main class="container">
     <h1>List of all Products</h1>
-    <table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category_ID</th>
+        </tr>
+        </thead>
+        <tbody>
         <% for(var i=0; i < products.length; i++) { %>
             <tr>
-                <td>ID : <%= products[i]._id %></td>
-                <td>/ Name : <%= products[i].productName %></td>
-                <td>/ Price : <%= products[i].productPrice %></td>
-                <td>/ Description : <%= products[i].productDescription %></td>
-                <td>/ Category : <%= products[i].productCategory %></td>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= products[i]._id %></td>
+                <td><%= products[i].productName %></td>
+                <td><%= products[i].productPrice %>€</td>
+                <td><%= products[i].productDescription %></td>
+                <td><%= products[i].productCategory %></td>
             </tr>
         <% } %>
+        </tbody>
     </table>
 </main>
 <%- include('../footer'); -%>

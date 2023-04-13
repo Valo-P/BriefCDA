@@ -7,14 +7,24 @@
 <%- include('../header'); -%>
 <main class="container">
     <h1>List of all Categories</h1>
-        <table>
-            <% for(var i=0; i < categories.length; i++) { %>
-                <tr>
-                    <td>ID : <%= categories[i]._id %></td>
-                    <td>/ Name : <%= categories[i].categoryName %></td>
-                </tr>
-            <% } %>
-        </table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0; i < categories.length; i++) { %>
+            <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= categories[i]._id %></td>
+                <td><%= categories[i].categoryName %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
 </main>
 <%- include('../footer'); -%>
 </body>
