@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+</head>
+<body>
+<p><%= JSON.stringify(products) %></p>
+<main>
+    <h1>List of all Products</h1>
+    <table>
+        <% for(var i=0; i < products.length; i++) { %>
+            <tr>
+                <td>ID : <%= products[i]._id %></td>
+                <td>/ Name : <%= products[i].productName %></td>
+                <td>/ Price : <%= products[i].productPrice %></td>
+                <td>/ Description : <%= products[i].productDescription %></td>
+                <td>/ Category : <%= products[i].productCategory %></td>
+            </tr>
+        <% } %>
+    </table>
+</main>
+</body>
+</html>

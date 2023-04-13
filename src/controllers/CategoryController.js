@@ -2,6 +2,7 @@ import Category from "../models/Category.js";
 export const getCategories = async (req,res,next) => {
 
     const categories = await Category.find();
+
     console.log("Categories find");
     console.log(categories);
     console.log(categories.length);

@@ -4,6 +4,7 @@ import path from "path";
 import dotenv from "dotenv";
 import homeRouter from "./routes/HomeRoute.js";
 import categoryRouter from "./routes/CategoryRoute.js";
+import productRouter from "./routes/ProductRoute.js";
 import connectDb from "./config/connectDb.js";
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname,"public")))
 
 app.use(homeRouter);
 app.use(categoryRouter);
+app.use(productRouter);
 
 app.listen(8082, () => {
     console.log('Server listening on port 8082');
