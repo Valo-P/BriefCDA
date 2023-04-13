@@ -7,6 +7,17 @@
     <title><%= title %></title>
 </head>
 <body>
-    <h1>Categories View</h1>
+    <p><%= JSON.stringify(categories) %></p>
+    <main>
+        <h1>List of all Categories</h1>
+        <table>
+            <% for(var i=0; i < categories.length; i++) { %>
+                <tr>
+                    <td>ID : <%= categories[i]._id %></td>
+                    <td>Name : <%= categories[i].categoryName %></td>
+                </tr>
+            <% } %>
+        </table>
+    </main>
 </body>
 </html>
