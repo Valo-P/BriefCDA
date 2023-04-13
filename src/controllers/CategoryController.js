@@ -15,7 +15,7 @@ export const getCategories = async (req,res,next) => {
 };
 
 export const getCategory = async (req, res, next) => {
-    const categoryID = req.body.categoryID;
+    const categoryID = req.params.id;
 
     const category = await Category.findById({
         _id: categoryID,
@@ -23,7 +23,11 @@ export const getCategory = async (req, res, next) => {
 
     console.log("Category find");
     console.log(category);
-    res.status(200).json({ category });
+    // res.status(200).json({ category });
+    res.status(200).render('category/getCategory', {
+        title: "Category",
+        category: category,
+    });
 }
 
 export const addCategory = async (req, res, next) => {

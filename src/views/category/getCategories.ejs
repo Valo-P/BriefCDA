@@ -13,6 +13,7 @@
             <th scope="col">#</th>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Link</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                 <th scope="row"><%= i+1 %></th>
                 <td><%= categories[i]._id %></td>
                 <td><%= categories[i].categoryName %></td>
+                <td><a href="/category/<%= categories[i]._id %>">View</a></td>
             </tr>
         <% } %>
         </tbody>
