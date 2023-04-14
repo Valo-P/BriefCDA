@@ -6,8 +6,9 @@
 <body>
 <%- include('../header'); -%>
 <main class="container">
-    <h1><%= category.categoryName %></h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <h1 class="mt-2"><%= category.categoryName %></h1>
+    <a href="/category/<%= category._id %>" class="card-link">View Category</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
         <% products.forEach((product) => { %>
             <div class="col">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
@@ -16,7 +17,6 @@
                         <h5 class="card-title"><%= product.productName %></h5>
                         <p class="card-text"><%= product.productDescription %></p>
                         <p class="card-text"><%= product.productPrice %>€</p>
-                        <a href="/category/<%= product.productCategory %>" class="card-link">View Category</a>
                         <a href="/product/<%= product._id %>" class="card-link">View Product</a>
                     </div>
                 </div>

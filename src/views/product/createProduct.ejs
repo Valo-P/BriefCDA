@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../head'); %>
+</head>
+<body>
+<%- include('../header'); -%>
+<main class="container">
+    <h1 class="mb-4 mt-2">Create New Product</h1>
+    <form method="post" action="/product-post-create">
+        <div class="mb-3">
+            <label for="productName" class="form-label">Name :</label>
+            <input type="text" class="form-control" id="productName" name="productName">
+        </div>
+        <div class="mb-3">
+            <label for="productPrice" class="form-label">Price :</label>
+            <input type="number" class="form-control" id="productPrice" name="productPrice">
+        </div>
+        <div class="mb-3">
+            <label for="productDescription" class="form-label">Description :</label>
+            <textarea type="text" class="form-control" id="productDescription" name="productDescription"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="productCategory" class="form-label">Category :</label>
+            <select id="productCategory" name="productCategory" class="form-select">
+                <option>Select Category</option>
+                <% categories.forEach( (category) => { %>
+                <option value="<%= category._id %>"><%= category.categoryName %></option>
+                <% }) %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+</main>
+<%- include('../footer'); -%>
+</body>
+</html>
