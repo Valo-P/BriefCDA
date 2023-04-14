@@ -23,7 +23,7 @@ app.use('/css', express.static(__dirname + '/public/assets/scss'));
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap'));// redirect bootstrap
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery'));
 
-app.use(express.static(path.join(__dirname,"public")))
+// app.use(express.static(path.join(__dirname,"public")))
 
 app.use(homeRouter);
 app.use(categoryRouter);

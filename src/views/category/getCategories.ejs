@@ -6,27 +6,53 @@
 <body>
 <%- include('../header'); -%>
 <main class="container">
-    <h1>List of all Categories</h1>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Link</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for(var i=0; i < categories.length; i++) { %>
+    <h1 class="mb-4 mt-2">List of all Categories</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        <% categories.forEach((category) => { %>
+            <div class="col">
+                <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                    <div class="card-header">ID : <%= category._id %></div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title"><%= category.categoryName %></h5>
+                        <p class="card-text"></p>
+                        <a href="/category/<%= category._id %>" class="card-link">View</a>
+                        <a href="/products/<%= category._id %>" class="card-link">View Products</a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <div class="container mt-5">
+        <button type="button" class="btn btn-success">Create</button>
+        <table class="table table-striped mt-2">
+            <thead>
             <tr>
-                <th scope="row"><%= i+1 %></th>
-                <td><%= categories[i]._id %></td>
-                <td><%= categories[i].categoryName %></td>
-                <td><a href="/category/<%= categories[i]._id %>">View</a></td>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Link</th>
+                <th scope="col">Action</th>
             </tr>
-        <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <% for(var i=0; i < categories.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= categories[i]._id %></td>
+                    <td><%= categories[i].categoryName %></td>
+                    <td>
+                        <a href="/category/<%= categories[i]._id %>">View</a>
+                        <a href="/products/<%= categories[i]._id %>">View Products</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning">Update</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
 </main>
 <%- include('../footer'); -%>
 </body>

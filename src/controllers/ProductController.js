@@ -1,4 +1,5 @@
 import Product from "../models/Product.js";
+import Category from "../models/Category.js";
 
 export const getProducts = async (req,res,next) => {
 
@@ -13,6 +14,27 @@ export const getProducts = async (req,res,next) => {
         products: products,
     });
 };
+
+export const getProductsByCategory = async (req, res, next) => {
+    const categoryID = req.params.id;
+
+    const category = await Category.findById({
+        _id: categoryID,
+    });
+
+    const products = await Product.find({
+        productCategory: categoryID,
+    });
+
+    console.log(products);
+
+    // res.status(200).json({ products });
+    res.status(200).render('product/getProductsByCategory', {
+        title: "CategoryProductList",
+        category: category,
+        products: products,
+    });
+}
 
 export const getProduct = async (req,res,next) => {
     const productID = req.body.productID;
