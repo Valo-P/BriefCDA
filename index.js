@@ -15,6 +15,7 @@ connectDb();
 const __dirname = path.resolve();
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
     secret: 'secret key',

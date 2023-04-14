@@ -31,7 +31,7 @@
         <% }); %>
     </div>
     <div class="container mt-5">
-        <button type="button" class="btn btn-success">Create</button>
+        <a href="/category-create" type="button" class="btn btn-success">Create</a>
         <table class="table table-striped mt-2">
             <thead>
             <tr>
@@ -53,8 +53,8 @@
                         <a href="/products/<%= categories[i]._id %>">View Products</a>
                     </td>
                     <td>
-                        <a href="/category/<%= categories[i]._id %>/update" type="button" class="btn btn-warning">Update</a>
-                        <a href="/category/<%= categories[i]._id %>/delete" onclick="return confirm('Are you sure you want to delete this item?');" type="button" class="btn btn-danger">Delete</a>
+                        <a href="/category-update/<%= categories[i]._id %>" type="button" class="btn btn-warning">Update</a>
+                        <a href="/category-delete/<%= categories[i]._id %>" onclick="return confirm('Are you sure you want to delete this item?');" type="button" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             <% } %>
