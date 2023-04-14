@@ -1,5 +1,5 @@
 import Category from "../models/Category.js";
-import {getProductsByCategory} from "./ProductController.js";
+import Product from "../models/Product.js";
 export const getCategories = async (req,res,next) => {
 
     const categories = await Category.find();
@@ -8,10 +8,17 @@ export const getCategories = async (req,res,next) => {
     console.log(categories);
     console.log(categories.length);
 
+    const success = req.flash('success');
+    const error = req.flash('error');
+    console.log(success);
+    console.log(error);
+
     // res.status(200).json({ categories });
     res.status(200).render('category/getCategories', {
         title: "CategoryList",
         categories: categories,
+        success: success,
+        error: error,
     });
 };
 
@@ -62,12 +69,25 @@ export const updateCategory = async (req,res,next) => {
 }
 
 export const deleteCategory = async (req, res, next) => {
-    const categoryID = req.body.categoryID;
+    const categoryID = req.params.id;
 
-    const category = await Category.findByIdAndDelete({
-        _id: categoryID,
-    })
+    const products = await Product.find({
+        productCategory: categoryID,
+    });
 
-    console.log("Category deleted")
-    res.status(200).json({ Message: "Category deleted"});
+    if(products.length < 1) {
+        const category = await Category.findByIdAndDelete({
+            _id: categoryID,
+        });
+        console.log("Category deleted");
+        req.flash('success','Category successfully deleted');
+        res.status(200).redirect('/categories');
+    } else {
+        console.log("Category cannot be deleted because there is product(s) link to it");
+        req.flash('error','Category cannot be deleted because there is product(s) link to it');
+        res.status(500).redirect('/categories');
+    }
+
+    // res.status(200).json({ products });
+    // res.status(200).json({ category });
 }

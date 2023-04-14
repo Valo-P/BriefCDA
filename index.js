@@ -1,5 +1,7 @@
 import express from "express";
+import session from 'express-session';
 import bodyParser from "body-parser";
+import flash from "connect-flash";
 import path from "path";
 import dotenv from "dotenv";
 import homeRouter from "./routes/HomeRoute.js";
@@ -14,6 +16,12 @@ const __dirname = path.resolve();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'secret key',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
 
 
 app.set("view engine", "ejs");
